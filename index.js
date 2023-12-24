@@ -28,5 +28,5 @@ const errorHandler = (err, req, res, next) => {
 }
 
 app.listen(5000, () => {
-    console.log(`listening on 3000`)
+    console.log(`listening on 5000`)
 })
