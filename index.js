@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config()
+const todoHandler = require("./routeHandler/todoHandler");
 
 const app = express();
 app.use(express.json());
@@ -15,6 +16,10 @@ mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cl
     .catch(err => console.log(err))
 
 
+//application routes
+app.use('/todo', todoHandler);
+
+//default error handler
 const errorHandler = (err, req, res, next) => {
     if (res.headersSent) {
         return next(err);
