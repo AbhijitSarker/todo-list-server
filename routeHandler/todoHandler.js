@@ -27,6 +27,15 @@ router.get("/", (req, res) => {
     });
 });
 
+// GET ACTIVE TODOS
+router.get("/active", async (req, res) => {
+  const todo = new Todo();
+  const data = await todo.findActive();
+  res.status(200).json({
+    data,
+  });
+});
+
 
 // GET A TODO by ID
 router.get("/:id", async (req, res) => {
@@ -113,6 +122,8 @@ router.delete("/:id", async (req, res) => {
     }
   });
 });
+
+
 
 module.exports = router;
 
