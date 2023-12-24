@@ -31,6 +31,8 @@ const errorHandler = (err, req, res, next) => {
     res.status(500).json({ err: err });
 }
 
+app.use(errorHandler);
+
 app.listen(5000, () => {
     console.log(`listening on 5000`)
 })
