@@ -48,9 +48,28 @@ router.post("/all", async (req, res) => {
   });
 });
 
-// PUT TODO
+// Update a TODO
 router.put("/:id", async (req, res) => {
-
+  const result = await Todo.findByIdAndUpdate(
+    { _id: req.params.id },
+    req.body,
+    {
+      new: true,
+      useFindAndModify: false,
+    },
+    (err) => {
+      if (err) {
+        res.status(500).json({
+          error: "There was a server side error!",
+        });
+      } else {
+        res.status(200).json({
+          message: "Todo was updated successfully!",
+        });
+      }
+    }
+  );
+  console.log(result);
 });
 
 // DELETE TODO
