@@ -36,6 +36,23 @@ router.get("/active", async (req, res) => {
   });
 });
 
+// GET ACTIVE TODOS
+router.get("/js", async (req, res) => {
+  const data = await Todo.findByJS();
+  res.status(200).json({
+    data,
+  });
+});
+
+
+// GET TODOS BY LANGUAGE
+router.get("/language", async (req, res) => {
+  const data = await Todo.find().byLanguage("ok");
+  res.status(200).json({
+    data,
+  });
+});
+
 
 // GET A TODO by ID
 router.get("/:id", async (req, res) => {
